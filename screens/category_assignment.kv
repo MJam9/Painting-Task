@@ -1,0 +1,55 @@
+#:kivy 2.0
+
+<CategoryAssignmentScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '10dp'
+        spacing: '8dp'
+
+        Button:
+            text: 'Zurück'
+            size_hint: 1, 0.08
+            on_release: app.switch_screen('main')
+
+        Label:
+            text: 'Themen-Kategorien zuweisen'
+            font_size: '16sp'
+            size_hint: 1, 0.08
+            text_size: self.width, None
+            halign: 'center'
+
+        Label:
+            text: 'Thema wählen:'
+            size_hint: 1, 0.06
+            font_size: '13sp'
+
+        Spinner:
+            id: topic_spinner
+            text: 'Wähle ein Thema'
+            size_hint: 1, 0.1
+            on_text: root.on_topic_selected(self.text)
+
+        Label:
+            text: 'Kategorien:'
+            size_hint: 1, 0.06
+            font_size: '13sp'
+
+        ScrollView:
+            size_hint: 1, 0.62
+            GridLayout:
+                id: category_container
+                cols: 1
+                spacing: '8dp'
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            id: delete_button
+            text: 'Eintrag löschen'
+            size_hint: 1, 0.08
+            background_color: 0.8, 0.2, 0.2, 1
+            color: 1, 1, 1, 1
+            disabled: True
+            opacity: 0
+            on_release: root.delete_current_topic()
+

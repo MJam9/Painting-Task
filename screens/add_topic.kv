@@ -1,0 +1,52 @@
+#:kivy 2.0
+
+<AddTopicScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '10dp'
+        spacing: '8dp'
+
+        Button:
+            text: 'Zurück'
+            size_hint: 1, 0.1
+            on_release: app.switch_screen('main')
+
+        Label:
+            text: 'Neues Thema hinzufügen'
+            font_size: '16sp'
+            size_hint: 1, 0.1
+            text_size: self.width, None
+            halign: 'center'
+
+        TextInput:
+            id: topic_input
+            hint_text: 'Thema eingeben'
+            multiline: False
+            size_hint: 1, 0.12
+
+        Label:
+            text: 'Kategorie:'
+            size_hint: 1, 0.08
+            font_size: '14sp'
+
+        Spinner:
+            id: category_spinner
+            text: 'Wähle eine Kategorie'
+            size_hint: 1, 0.12
+            on_text: root.on_category_choice(self, self.text)
+
+        TextInput:
+            id: new_category_input
+            hint_text: 'Neue Kategorie eingeben'
+            multiline: False
+            size_hint: 1, 0
+            opacity: 0
+            disabled: True
+
+        Widget:
+            size_hint: 1, 0.3
+
+        Button:
+            text: 'Hinzufügen'
+            size_hint: 1, 0.12
+            on_release: root.add_topic()

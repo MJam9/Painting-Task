@@ -1,0 +1,42 @@
+#:kivy 2.0
+
+<RandomChooseScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '10dp'
+        spacing: '8dp'
+
+        Button:
+            text: 'Zurück'
+            size_hint: 1, 0.1
+            on_release: app.switch_screen('main')
+
+        Label:
+            text: 'Wähle eine Kategorie'
+            font_size: '16sp'
+            size_hint: 1, 0.08
+            text_size: self.width, None
+            halign: 'center'
+
+        Spinner:
+            id: random_spinner
+            text: 'Zufällig'
+            size_hint: 1, 0.12
+            on_text: root.choose_random_topic()
+
+        Label:
+            id: result_label
+            text: ''
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 1, 0.35
+            text_size: self.width, None
+            font_size: '14sp'
+
+        Button:
+            text: 'Neues Thema'
+            size_hint: 1, 0.12
+            on_release: root.choose_random_topic()
+
+        Widget:
+            size_hint: 1, 0.11

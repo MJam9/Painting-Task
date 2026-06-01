@@ -1,0 +1,32 @@
+#:kivy 2.0
+
+<MainMenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '10dp'
+        spacing: '10dp'
+
+        Label:
+            text: 'Willkommen bei\nPainting Topic Zufall'
+            font_size: '18sp'
+            size_hint: 1, 0.15
+            halign: 'center'
+            text_size: self.width, None
+
+        Button:
+            text: 'Thema hinzufügen'
+            size_hint: 1, 0.2
+            on_release: app.switch_screen('add')
+
+        Button:
+            text: 'Thema zufällig auswählen'
+            size_hint: 1, 0.2
+            on_release: app.switch_screen('random')
+
+        Button:
+            text: 'Thema-Kategorie zuweisen'
+            size_hint: 1, 0.2
+            on_release: app.switch_screen('assign')
+
+        Widget:
+            size_hint: 1, 0.25
